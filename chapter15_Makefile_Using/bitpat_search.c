@@ -1,38 +1,3 @@
-// Program looks for the occurrence of a specified pattern of bits inside an unsigned int.
-// Программа для поиска шаблона из битов в двоичном представлении переменной типа unsigned int
-#include <stdio.h>
-// Function returns the number of bits contained in an int on particular machine.
-// Функция определяет число битов в типе unsigned int
- int int_size (void) 
- {
-  unsigned int w1 = ~0;
-  int size = 0;
-    
-  while (w1) {
-   w1 >>= 1;
-   ++size;
-   }
-   
-   return size;
- }
-// Функция определяет состояние бита с номером n. 
-// 0 указывает на крайний левый бит.
-int bit_test (unsigned int number, int n)
- {
-	int test, size;
-	int int_size (void);
-	
-	size = int_size();
-	if (n > size)
-	n = n % size;
-	if ( ((1 << size - n - 1 ) & number ) == 0)
-	test = 0;
-	else
-	test = 1;
-	
-	return test;
- }
-
 // Function searches the integer source, starting at the leftmost bit, to see if the rightmost n bits of pattern occur in source. 
 // The function returns the number of the bit at which the pattern begins. If the pattern is not found, then the function returns –1.
 // Функция ищет заданный шаблон из n правых битов переменной pattern внутри переменной типа unsigned int.
@@ -66,14 +31,3 @@ int bitpat_search (unsigned int source, unsigned int pattern, int n)
  
  return found;
  }
-
-int main (void)
-{
- int index;
- int bitpat_search (unsigned int source, unsigned int pattern, int n);
- 
- index = bitpat_search (0xe1f4, 0x5, 3);
- printf("%i\n", index);
- 
- return 0;
-}
